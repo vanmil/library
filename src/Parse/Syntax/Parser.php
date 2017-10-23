@@ -204,6 +204,7 @@ class Parser
             default:
             case 'text':
             case 'textarea':
+            case 'colorpicker':
                 $result = '{{ ' . $field . ' }}';
                 break;
             case 'markdown':
