@@ -51,6 +51,7 @@ class FieldParser
         'radio',
         'checkbox',
         'datepicker',
+        'balloon-selector',
         'repeater',
         'variable'
     ];
@@ -254,7 +255,7 @@ class FieldParser
                 $params['type'] = $tagName;
             }
 
-            if (in_array($tagName, ['dropdown', 'radio']) && isset($params['options'])) {
+            if (in_array($tagName, ['dropdown', 'radio', 'balloon-selector']) && isset($params['options'])) {
                 $params['options'] = $this->processOptionsToArray($params['options']);
             }
 
