@@ -50,6 +50,7 @@ class FieldParser
         'dropdown',
         'radio',
         'checkbox',
+        'colorpicker',
         'repeater',
         'variable'
     ];
@@ -257,6 +258,10 @@ class FieldParser
                 $params['options'] = $this->processOptionsToArray($params['options']);
             }
 
+            if (($tagName == 'colorpicker') && isset($params['availableColors'])) {
+                $params['availableColors'] = $this->processOptionsToArray($params['availableColors']);
+            }
+
             $tags[$name] = $tagString;
             $fields[$name] = $params;
         }
@@ -392,7 +397,7 @@ class FieldParser
                 if (strlen($key)) {
                     if (!preg_match('/^[0-9a-z-_]+$/i', $key)) {
                         throw new Exception(sprintf(
-                            'Invalid drop-down option key: %s. Option keys can contain only digits, Latin letters and characters _ and -', $key
+                            'Invalid option key: %s. Option keys can contain only digits, Latin letters and characters _ and -', $key
                         ));
                     }
 
